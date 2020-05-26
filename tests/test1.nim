@@ -2,7 +2,6 @@ import unittest
 import "../src/cache.nim"
 import os
 import times
-import lists
 
 type FreshIndicator = distinct bool
 
@@ -88,7 +87,7 @@ suite "least recently used cache":
     assert fresh == false
     assert x.len == 2 # peter and bob
     var i = 0
-    for value in x:
+    for value in x.items:
       assert value == ["hello bob", "hello peter"][i]
       inc i
 

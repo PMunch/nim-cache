@@ -106,14 +106,14 @@ iterator items*[X, Y; strat: static[CacheStrategy]](
   cache: Cache[X, Y, strat]): Y =
   ## Iterate over the values in the cache, in either first used to last used or
   ## oldest to youngest order depending on `CacheStrategy`.
-  for item in cache.order:
+  for item in lists.items(cache.order):
     yield item.value
 
 iterator pairs*[X, Y; strat: static[CacheStrategy]](
   cache: Cache[X, Y, strat]): (X, Y) =
   ## Iterate over the key/value pairs in the cache, in either first used to
   ## last used or oldest to youngest order depending on `CacheStrategy`.
-  for item in cache.order:
+  for item in lists.items(cache.order):
     yield (item.key, item.value)
 
 iterator nodes[X, Y; strat: static[CacheStrategy]](
